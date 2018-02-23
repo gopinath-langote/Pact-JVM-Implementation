@@ -27,5 +27,5 @@ public class Customer {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-    
+
 }

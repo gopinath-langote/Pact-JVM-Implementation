@@ -4,15 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
 
 @Service
 public class CustomerServiceGateway {
-    private RestTemplate restTemplate;
     private final String customerServiceHost;
     private final String customerServicePort;
+    private RestTemplate restTemplate;
 
     @Autowired
     public CustomerServiceGateway(RestTemplate restTemplate,
