@@ -1,14 +1,9 @@
 package com.vodqa.pact.paymentservice;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Objects;
 
 public class Customer {
-    @JsonProperty
     private String name;
-    @JsonProperty
     private String emailId;
 
     public Customer() {
