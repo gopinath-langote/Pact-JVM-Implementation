@@ -36,7 +36,7 @@ public class CustomerServiceIntegrationTest {
 
 
     @Test
-    public void name() throws Exception {
+    public void shouldReturnCustomer() throws Exception {
         String body = "{\"name\":\"Gopinath\"," +
                 "\"emailId\":\"gopinath@gmail.com\"}";
 
