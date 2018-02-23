@@ -1,0 +1,3 @@
+rootProject.name = 'Pact-JVM-Implementation'
+include "payment-service", "customer-service"
+
