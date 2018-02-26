@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value = "/payment")
+@RestController
 public class PaymentController {
     private CustomerServiceGateway customerServiceGateway;
 
@@ -13,7 +13,7 @@ public class PaymentController {
         this.customerServiceGateway = customerServiceGateway;
     }
 
-    @RequestMapping
+    @RequestMapping(value = "/payment")
     public Payment payment() {
         Customer customer = customerServiceGateway.getCustomer();
         return new Payment(1L, 100L, customer);
