@@ -37,7 +37,7 @@ public class CustomerServiceIntegrationTest {
 
     @Test
     public void shouldReturnCustomer() throws Exception {
-        String body = "{\"name\":\"Gopinath\"," +
+        String body = "{\"customerName\":\"Gopinath\"," +
                 "\"emailId\":\"gopinath@gmail.com\"}";
 
         mockRestServiceServer.expect(requestTo("http://localhost:8052/customer"))
