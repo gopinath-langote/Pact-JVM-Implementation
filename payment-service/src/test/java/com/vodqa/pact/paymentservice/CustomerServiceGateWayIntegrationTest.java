@@ -20,7 +20,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 @ActiveProfiles("test")
 @RestClientTest(CustomerServiceGateway.class)
 @RunWith(SpringJUnit4ClassRunner.class)
-public class CustomerServiceIntegrationTest {
+public class CustomerServiceGateWayIntegrationTest {
     @Autowired
     private RestTemplate restTemplate;
 
