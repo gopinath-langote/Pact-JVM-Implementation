@@ -1,23 +1,23 @@
 package com.vodqa.pact.customerservice;
 
 public class Customer {
-    private String name;
+    private String customerName;
     private String emailId;
 
     public Customer() {
     }
 
-    public Customer(String name, String emailId) {
-        this.name = name;
+    public Customer(String customerName, String emailId) {
+        this.customerName = customerName;
         this.emailId = emailId;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getEmailId() {

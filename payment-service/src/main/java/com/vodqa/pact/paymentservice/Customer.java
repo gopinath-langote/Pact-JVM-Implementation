@@ -3,23 +3,23 @@ package com.vodqa.pact.paymentservice;
 import java.util.Objects;
 
 public class Customer {
-    private String name;
+    private String customerName;
     private String emailId;
 
     public Customer() {
     }
 
-    public Customer(String name, String emailId) {
-        this.name = name;
+    public Customer(String customerName, String emailId) {
+        this.customerName = customerName;
         this.emailId = emailId;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getEmailId() {
@@ -35,20 +35,20 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(name, customer.name) &&
+        return Objects.equals(customerName, customer.customerName) &&
                 Objects.equals(emailId, customer.emailId);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(name, emailId);
+        return Objects.hash(customerName, emailId);
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "name='" + name + '\'' +
+                "customerName='" + customerName + '\'' +
                 ", emailId='" + emailId + '\'' +
                 '}';
     }

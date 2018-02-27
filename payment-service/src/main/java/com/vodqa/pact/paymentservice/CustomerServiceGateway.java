@@ -1,9 +1,13 @@
 package com.vodqa.pact.paymentservice;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.IOException;
 
 @Service
 public class CustomerServiceGateway {
@@ -20,9 +24,17 @@ public class CustomerServiceGateway {
         this.customerServicePort = customerServicePort;
     }
 
-    public Customer getCustomer() {
+    public Customer getCustomer() throws IOException {
         String url = "http://" + customerServiceHost + ":" + customerServicePort + "/customer";
-        return restTemplate.getForEntity(url, Customer.class).getBody();
+        String jsonResponse = restTemplate.getForEntity(url, String.class).getBody();
+        return getObjectMapper().readValue(jsonResponse, Customer.class);
     }
 
+    private ObjectMapper getObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, true);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
+        return objectMapper;
+    }
 }
