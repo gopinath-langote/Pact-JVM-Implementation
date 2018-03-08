@@ -30,6 +30,12 @@ public class CustomerServiceGateway {
         return getObjectMapper().readValue(jsonResponse, Customer.class);
     }
 
+    public Address getAddress() throws IOException {
+        String url = "http://" + customerServiceHost + ":" + customerServicePort + "/address";
+        String jsonResponse = restTemplate.getForEntity(url, String.class).getBody();
+        return getObjectMapper().readValue(jsonResponse, Address.class);
+    }
+
     private ObjectMapper getObjectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
