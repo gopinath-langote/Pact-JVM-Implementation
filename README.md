@@ -6,7 +6,7 @@ Example projects for https://github.com/DiUS/pact-jvm built in spring boot frame
 - Install Java-7 or higher version
 - Install IntelliJ IDEA for your operating system. (https://www.jetbrains.com/idea/download/)
 - Clone the repository `git clone https://github.com/gopinath-langote/Pact-JVM-Implementation.git`
-- Open the project in `IntelliJ IDEA`. This will take a while to download dependencies.
+- Open the project(root directory `Pact-JVM-Implementation`) in `IntelliJ IDEA`. This will take a while to download dependencies.
 - Go to the project directory `cd Pact-JVM-Implementation` 
 
 
