@@ -24,11 +24,11 @@ For Linux/Mac : `./gradlew :customer-service:bootRun --no-daemon`
 
 For Windows : `gradlew.bat :customer-service:bootRun --no-daemon` 
 
-- Check service is running or not at `localhost:8052/customer`
+- Check service is running or not at [http://localhost:8052/customer](http://localhost:8052/customer)
 
 # Run the Payment Service (Consumer service)
 For Linux/Mac : `./gradlew :payment-service:bootRun --no-daemon` 
 
 For Windows : `gradlew.bat :payment-service:bootRun --no-daemon` 
 
-- Check service is running or not at `localhost:8051/payment`
+- Check service is running or not at [http://localhost:8051/payment](http://localhost:8051/payment)
