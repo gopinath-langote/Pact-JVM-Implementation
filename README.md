@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/gopinath-langote/Pact-JVM-Implementation.svg)](https://travis-ci.org/gopinath-langote/Pact-JVM-Implementation)
+
+
 # Pact-JVM-Implementation
 
 Example projects for https://github.com/DiUS/pact-jvm built in spring boot framework.
