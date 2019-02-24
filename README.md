@@ -22,16 +22,16 @@ For Windows : `gradlew.bat clean build --no-daemon`
 
 `This can take some time to download dependencies`
 
-# Run the Customer Service (Producer service)
-For Linux/Mac : `./gradlew :customer-service:bootRun --no-daemon` 
+# Run the User Service (Producer service)
+For Linux/Mac : `./gradlew :user-service:bootRun --no-daemon` 
 
-For Windows : `gradlew.bat :customer-service:bootRun --no-daemon` 
+For Windows : `gradlew.bat :user-service:bootRun --no-daemon` 
 
-- Check service is running or not at [http://localhost:8052/customer](http://localhost:8052/customer)
+- Check service is running or not at [http://localhost:8052/user](http://localhost:8052/user)
 
-# Run the Payment Service (Consumer service)
-For Linux/Mac : `./gradlew :payment-service:bootRun --no-daemon` 
+# Run the Account Service (Consumer service)
+For Linux/Mac : `./gradlew :Account-service:bootRun --no-daemon` 
 
-For Windows : `gradlew.bat :payment-service:bootRun --no-daemon` 
+For Windows : `gradlew.bat :Account-service:bootRun --no-daemon` 
 
-- Check service is running or not at [http://localhost:8051/payment](http://localhost:8051/payment)
+- Check service is running or not at [http://localhost:8051/Account](http://localhost:8051/Account)

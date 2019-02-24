@@ -1,0 +1,53 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.10.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("au.com.dius:pact-jvm-provider-gradle_2.11:3.5.7-jre7.0")
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'au.com.dius.pact'
+
+jar {
+    baseName = 'user-service'
+    version = '1.0.0'
+}
+
+group = 'com.vodqa.pact'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("junit:junit")
+    testCompile("au.com.dius:pact-jvm-consumer-junit_2.11:3.5.7-jre7.0")
+}
+
+pact {
+    serviceProviders {
+        UserService {
+            protocol = 'http'
+            host = 'localhost'
+            port = 8052
+            path = '/'
+
+            hasPactsWith('AccountService') {
+                pactFileLocation = file("$rootDir/Pacts")
+            }
+
+        }
+    }
+}
