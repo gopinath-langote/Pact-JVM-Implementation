@@ -7,6 +7,7 @@ import au.com.dius.pact.consumer.dsl.DslPart;
 import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.RequestResponsePact;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
@@ -18,6 +19,11 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 
 public class UserContractTest {
+    @Before
+    public void setUp() throws Exception {
+        System.setProperty("pact.rootDir", "../Pacts");
+    }
+
     @Rule
     public PactProviderRuleMk2 mockServer = new PactProviderRuleMk2("UserService", this);
 
