@@ -37,16 +37,17 @@ public class UserServiceGateWayIntegrationTest {
 
     @Test
     public void shouldReturnUser() throws Exception {
-        String body = "{\"userName\":\"Gopinath\"," +
+        String body = "{\"id\":\"1\"}" +
+                "{\"userName\":\"Gopinath\"," +
                 "\"emailId\":\"gopinath@gmail.com\"}";
 
         mockRestServiceServer.expect(requestTo("http://localhost:8052/user"))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(body, MediaType.APPLICATION_JSON));
 
-        User user = gateway.getuser();
+        User user = gateway.getuser("1");
 
-        User expectedUser = new User("Gopinath", "gopinath@gmail.com");
+        User expectedUser = new User("1", "Gopinath", "gopinath@gmail.com");
         assertThat(user).isEqualTo(expectedUser);
     }
 }

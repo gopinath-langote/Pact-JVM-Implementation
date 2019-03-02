@@ -24,8 +24,8 @@ public class UserServiceGateway {
         this.userServicePort = userServicePort;
     }
 
-    public User getuser() throws IOException {
-        String url = "http://" + userServiceHost + ":" + userServicePort + "/user";
+    public User getuser(String id) throws IOException {
+        String url = "http://" + userServiceHost + ":" + userServicePort + "/api/user/" + id;
         String jsonResponse = restTemplate.getForEntity(url, String.class).getBody();
         return getObjectMapper().readValue(jsonResponse, User.class);
     }

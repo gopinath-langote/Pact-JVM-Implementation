@@ -33,12 +33,13 @@ public class UserContractTest {
         headers.put("Content-Type", "application/json;charset=UTF-8");
 
         DslPart body = new PactDslJsonBody()
-                .stringValue("userName", "gopi")
-                .stringValue("emailId", "gopinath@gmail.com");
+                .stringValue("id", "1")
+                .stringValue("userName", "bob")
+                .stringValue("userEmailId", "me@gmail.com");
 
         return builder
                 .uponReceiving("A request for a user")
-                .path("/user")
+                .path("/api/user/1")
                 .method("GET")
                 .willRespondWith()
                 .headers(headers)
@@ -54,10 +55,10 @@ public class UserContractTest {
         UserServiceGateway gateway = new UserServiceGateway(new RestTemplate(),
                 mockServer.getConfig().getHostname(), mockServer.getPort().toString());
 
-        User user = gateway.getuser();
+        User user = gateway.getuser("1");
 
         User expectedUser =
-                new User("gopi", "gopinath@gmail.com");
+                new User("1", "bob", "me@gmail.com");
         assertEquals(user, expectedUser);
     }
 }
