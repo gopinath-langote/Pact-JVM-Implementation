@@ -23,22 +23,32 @@ https://www.slideshare.net/GopinathLangote/confidently-releasing-microservices-w
 ##### Run following commands on the terminal or command prompt.
 
 # Build the application
-For Linux/Mac : `./gradlew clean build --no-daemon`
+For Linux/Mac : `./gradlew clean build`
 
-For Windows : `gradlew.bat clean build --no-daemon`
+For Windows : `gradlew.bat clean build`
 
 `This can take some time to download dependencies`
 
 # Run the User Service (Producer service)
-For Linux/Mac : `./gradlew :user-service:bootRun --no-daemon` 
+For Linux/Mac : `./gradlew :user-service:bootRun` 
 
-For Windows : `gradlew.bat :user-service:bootRun --no-daemon` 
+For Windows : `gradlew.bat :user-service:bootRun` 
 
-- Check service is running or not at [http://localhost:8052/user](http://localhost:8052/user)
+- Check service is running or not at [http://localhost:8052/api/user/1](http://localhost:8052/api/user/1)
 
 # Run the Account Service (Consumer service)
-For Linux/Mac : `./gradlew :Account-service:bootRun --no-daemon` 
+For Linux/Mac : `./gradlew :account-service:bootRun` 
 
-For Windows : `gradlew.bat :Account-service:bootRun --no-daemon` 
+For Windows : `gradlew.bat :account-service:bootRun` 
 
-- Check service is running or not at [http://localhost:8051/Account](http://localhost:8051/Account)
+- Check service is running or not at [http://localhost:8051/api/account/1/statement](http://localhost:8051/api/account/1/statement)
+
+# Run the Consumer Service Contract Test(Account service)
+run the test `com.vodqa.pact.accountervice.UserContractTest`
+
+# Run the Provider Service Contract Verification(User service)
+(Make sure provider service is running locally before verifying pact)
+
+For Linux/Mac : `./gradlew :user-service:pactVerify` 
+
+For Windows : `gradlew.bat :user-service:pactVerify` 

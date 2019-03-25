@@ -1,5 +1,7 @@
 package com.vodqa.pact.accountervice;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vodqa.pact.accountervice.model.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,17 +39,16 @@ public class UserServiceGateWayIntegrationTest {
 
     @Test
     public void shouldReturnUser() throws Exception {
-        String body = "{\"id\":\"1\"}" +
-                "{\"userName\":\"Gopinath\"," +
-                "\"emailId\":\"gopinath@gmail.com\"}";
+        String body = "{\"id\":\"1\",\"userName\":\"bob\",\"userEmailId\":\"me@gmail.com\"}";
 
-        mockRestServiceServer.expect(requestTo("http://localhost:8052/user"))
+        mockRestServiceServer.expect(requestTo("http://localhost:8052/api/user/1"))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(body, MediaType.APPLICATION_JSON));
 
         User user = gateway.getuser("1");
 
-        User expectedUser = new User("1", "Gopinath", "gopinath@gmail.com");
+        User expectedUser = new User("1", "bob", "me@gmail.com");
+        System.out.println(new ObjectMapper().writeValueAsString(expectedUser));
         assertThat(user).isEqualTo(expectedUser);
     }
 }

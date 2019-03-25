@@ -1,4 +1,4 @@
-package com.vodqa.pact.accountervice;
+package com.vodqa.pact.accountervice.model;
 
 import java.util.Objects;
 
@@ -41,5 +41,14 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id, userName, userEmailId);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userEmailId='" + userEmailId + '\'' +
+                '}';
     }
 }
