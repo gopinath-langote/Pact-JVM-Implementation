@@ -4,6 +4,13 @@
 # Pact-JVM-Implementation
 
 Example projects for https://github.com/DiUS/pact-jvm built in spring boot framework.
+
+
+## Slides from the conference talk `Agile India 2019`
+https://www.slideshare.net/GopinathLangote/confidently-releasing-microservices-with-consumer-driven-contracts-1
+
+
+
 --------
 #Installations 
 - Install Java-7 or higher version
