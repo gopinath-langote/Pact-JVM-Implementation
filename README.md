@@ -5,16 +5,10 @@
 
 Example projects for https://github.com/DiUS/pact-jvm built in spring boot framework.
 
-
-## Slides from the conference talk `Agile India 2019`
-https://www.slideshare.net/GopinathLangote/confidently-releasing-microservices-with-consumer-driven-contracts-1
-
-
-
 --------
 #Installations 
-- Install Java-7 or higher version
-- Install IntelliJ IDEA for your operating system. (https://www.jetbrains.com/idea/download/)
+- Install Java-8
+- Install Intellij IDEA for your operating system. (https://www.jetbrains.com/idea/download/)
 - Clone the repository `git clone https://github.com/gopinath-langote/Pact-JVM-Implementation.git`
 - Open the project(root directory `Pact-JVM-Implementation`) in `IntelliJ IDEA`. This will take a while to download dependencies.
 - Go to the project directory `cd Pact-JVM-Implementation` 
@@ -34,21 +28,17 @@ For Linux/Mac : `./gradlew :user-service:bootRun`
 
 For Windows : `gradlew.bat :user-service:bootRun` 
 
-- Check service is running or not at [http://localhost:8052/api/user/1](http://localhost:8052/api/user/1)
+- Check service is running or not at [http://localhost:8052/api/user/static](http://localhost:8052/api/user/static)
 
 # Run the Account Service (Consumer service)
 For Linux/Mac : `./gradlew :account-service:bootRun` 
 
 For Windows : `gradlew.bat :account-service:bootRun` 
 
-- Check service is running or not at [http://localhost:8051/api/account/1/statement](http://localhost:8051/api/account/1/statement)
+- Check service is running or not at [http://localhost:8051/api/account/static/statement](http://localhost:8051/api/account/static/statement)
 
-# Run the Consumer Service Contract Test(Account service)
-run the test `com.vodqa.pact.accountervice.UserContractTest`
+---
 
-# Run the Provider Service Contract Verification(User service)
-(Make sure provider service is running locally before verifying pact)
+## Slides from the conference talk `Agile India 2019`
+https://www.slideshare.net/GopinathLangote/confidently-releasing-microservices-with-consumer-driven-contracts-1
 
-For Linux/Mac : `./gradlew :user-service:pactVerify` 
-
-For Windows : `gradlew.bat :user-service:pactVerify` 
