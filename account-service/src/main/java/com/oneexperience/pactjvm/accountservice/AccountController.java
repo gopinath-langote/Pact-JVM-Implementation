@@ -1,7 +1,7 @@
-package com.vodqa.pact.accountervice;
+package com.oneexperience.pactjvm.accountservice;
 
-import com.vodqa.pact.accountervice.model.Account;
-import com.vodqa.pact.accountervice.model.User;
+import com.oneexperience.pactjvm.accountservice.model.Account;
+import com.oneexperience.pactjvm.accountservice.model.User;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

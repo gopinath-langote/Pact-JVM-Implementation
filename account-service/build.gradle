@@ -1,42 +1,29 @@
-buildscript {
-    ext {
-        springBootVersion = '1.5.10.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("au.com.dius:pact-jvm-provider-gradle_2.11:3.5.7-jre7.0")
-    }
+plugins {
+    id 'org.springframework.boot' version '2.1.8.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
 }
+
+group = 'com.one-experience.pactjvm'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'au.com.dius.pact'
-
-jar {
-    baseName = 'account-service'
-    version = '1.0.0'
-}
-
-group = 'com.vodqa.pact'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
-
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile("junit:junit")
-    testCompile("au.com.dius:pact-jvm-consumer-junit_2.11:3.5.7-jre7.0")
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework:spring-web'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+    testCompile 'au.com.dius:pact-jvm-consumer-junit5:4.0.0-beta.6'
+    compile group: 'au.com.dius', name: 'pact-jvm-provider-junit5', version: '4.0.0-beta.6'
+
 }
-
-
 test {
     systemProperties['pact.rootDir'] = "$rootDir/Pacts/"
+    useJUnitPlatform()
 }

@@ -1,3 +1,2 @@
-rootProject.name = 'Pact-JVM-Implementation'
+rootProject.name = 'pact-jvm'
 include "account-service", "user-service"
-

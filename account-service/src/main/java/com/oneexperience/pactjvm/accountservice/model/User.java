@@ -1,4 +1,4 @@
-package com.vodqa.pact.accountervice.model;
+package com.oneexperience.pactjvm.accountservice.model;
 
 import java.util.Objects;
 

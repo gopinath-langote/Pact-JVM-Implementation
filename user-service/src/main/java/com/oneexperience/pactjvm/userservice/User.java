@@ -1,4 +1,4 @@
-package com.vodqa.pact.userservice;
+package com.oneexperience.pactjvm.userservice;
 
 import java.util.Objects;
 

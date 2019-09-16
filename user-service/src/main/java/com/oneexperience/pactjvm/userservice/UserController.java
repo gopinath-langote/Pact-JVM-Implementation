@@ -1,4 +1,4 @@
-package com.vodqa.pact.userservice;
+package com.oneexperience.pactjvm.userservice;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
