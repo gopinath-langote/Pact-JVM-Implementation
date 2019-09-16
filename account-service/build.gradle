@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.1.8.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
+    id "au.com.dius.pact" version "4.0.0-beta.6"
 }
 
 group = 'com.one-experience.pactjvm'
@@ -26,4 +27,12 @@ dependencies {
 test {
     systemProperties['pact.rootDir'] = "$rootDir/Pacts/"
     useJUnitPlatform()
+}
+pact {
+
+    publish {
+        pactDirectory = 'Pacts' // defaults to $buildDir/pacts
+        pactBrokerUrl = 'http://4c5c47f5.ngrok.io'
+    }
+
 }
