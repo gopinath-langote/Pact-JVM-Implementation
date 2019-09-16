@@ -28,6 +28,15 @@ public class UserServiceGateway {
 
     public User getStaticUser() throws IOException {
         String url = userServiceBaseUrl + "/api/user/static";
+        return getUserResourceByUrl(url);
+    }
+
+    public User getDynamicUser(String id) throws IOException {
+        String url = userServiceBaseUrl + "/api/user/dynamic/" + id;
+        return getUserResourceByUrl(url);
+    }
+
+    private User getUserResourceByUrl(String url) throws IOException {
         String jsonResponse = restTemplate.getForEntity(url, String.class).getBody();
         return objectMapper.readValue(jsonResponse, User.class);
     }
