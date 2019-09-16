@@ -11,6 +11,7 @@ import au.com.dius.pact.core.model.annotations.Pact;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oneexperience.pactjvm.accountservice.model.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.web.client.RestTemplate;
@@ -52,6 +53,31 @@ public class UserContractTest {
 
     }
 
+    @Pact(consumer = "AccountService")
+    public RequestResponsePact createExpectationsStateful(PactDslWithProvider builder) {
+        User expectedUser = new User("1", "bob", "me@gmail.com");
+
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/json;charset=UTF-8");
+
+        DslPart body = new PactDslJsonBody()
+                .stringValue("id", expectedUser.getId())
+                .stringValue("userName", "bob")
+                .stringValue("userEmailId", "me@gmail.com");
+
+        return builder
+                .given("user-1-exists")
+                .uponReceiving("A request for a user")
+                .path("/api/user/dynamic/" + expectedUser.getId())
+                .method("GET")
+                .willRespondWith()
+                .headers(headers)
+                .status(200)
+                .body(body)
+                .toPact();
+
+    }
+
     @Test
     @PactTestFor(pactMethod = "createExpectations")
     public void shouldReturnAUser(MockServer mockServer) throws IOException {
@@ -61,6 +87,17 @@ public class UserContractTest {
 
         User expectedUser =
                 new User("id", "bob", "me@gmail.com");
+        assertEquals(user, expectedUser);
+    }
+
+    @Test
+    @PactTestFor(pactMethod = "createExpectationsStateful")
+    public void shouldReturnAUser1(MockServer mockServer) throws IOException {
+        User expectedUser = new User("1", "bob", "me@gmail.com");
+        UserServiceGateway gateway = new UserServiceGateway(new RestTemplate(), new ObjectMapper(), mockServer.getUrl());
+
+        User user = gateway.getDynamicUser(expectedUser.getId());
+
         assertEquals(user, expectedUser);
     }
 }
