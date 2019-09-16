@@ -1,3 +1,13 @@
 language: java
+install: true
+os: linux
+dist: trusty
 jdk:
   - oraclejdk8
+
+jobs:
+  include:
+    - stage: create-contract-test
+      script: ./gradlew :account-service:test
+    - stage: provider-contract-verification
+      script: ./gradlew :user-service:test
