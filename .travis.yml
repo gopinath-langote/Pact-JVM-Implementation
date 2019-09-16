@@ -7,7 +7,7 @@ jdk:
 
 jobs:
   include:
-    - stage: create-contract-test
+    - stage: consumer-create-contracts
       script: ./gradlew :account-service:test
     - stage: provider-contract-verification
       script: ./gradlew :user-service:test

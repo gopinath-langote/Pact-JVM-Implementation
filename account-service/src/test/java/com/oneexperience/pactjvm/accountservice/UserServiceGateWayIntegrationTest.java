@@ -41,7 +41,7 @@ public class UserServiceGateWayIntegrationTest {
     public void shouldReturnUser() throws Exception {
         String body = "{\"id\":\"1\",\"userName\":\"bob\",\"userEmailId\":\"me@gmail.com\"}";
 
-        mockRestServiceServer.expect(MockRestRequestMatchers.requestTo("http://localhost:8052/api/user/1"))
+        mockRestServiceServer.expect(MockRestRequestMatchers.requestTo("http://localhost:8052/api/user/static"))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(body, MediaType.APPLICATION_JSON));
 
