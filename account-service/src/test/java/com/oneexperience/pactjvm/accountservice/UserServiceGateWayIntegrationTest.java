@@ -45,7 +45,7 @@ public class UserServiceGateWayIntegrationTest {
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(body, MediaType.APPLICATION_JSON));
 
-        User user = gateway.getuser("1");
+        User user = gateway.getStaticUser();
 
         User expectedUser = new User("1", "bob", "me@gmail.com");
         System.out.println(new ObjectMapper().writeValueAsString(expectedUser));

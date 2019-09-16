@@ -16,7 +16,7 @@ public class AccountController {
 
     @RequestMapping(value = "/api/account/{id}/statement")
     public Account getUser(@PathVariable("id") String id) throws Exception {
-        User user = userServiceGateway.getuser(id);
+        User user = userServiceGateway.getStaticUser();
         return new Account(id, 100L, user);
     }
 }

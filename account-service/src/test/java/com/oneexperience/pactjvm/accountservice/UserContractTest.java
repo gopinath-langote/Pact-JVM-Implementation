@@ -36,13 +36,13 @@ public class UserContractTest {
         headers.put("Content-Type", "application/json;charset=UTF-8");
 
         DslPart body = new PactDslJsonBody()
-                .stringValue("id", "1")
+                .stringValue("id", "id")
                 .stringValue("userName", "bob")
                 .stringValue("userEmailId", "me@gmail.com");
 
         return builder
                 .uponReceiving("A request for a user")
-                .path("/api/user/1")
+                .path("/api/user/static")
                 .method("GET")
                 .willRespondWith()
                 .headers(headers)
@@ -57,10 +57,10 @@ public class UserContractTest {
     public void shouldReturnAUser(MockServer mockServer) throws IOException {
         UserServiceGateway gateway = new UserServiceGateway(new RestTemplate(), new ObjectMapper(), mockServer.getUrl());
 
-        User user = gateway.getuser("1");
+        User user = gateway.getStaticUser();
 
         User expectedUser =
-                new User("1", "bob", "me@gmail.com");
+                new User("id", "bob", "me@gmail.com");
         assertEquals(user, expectedUser);
     }
 }

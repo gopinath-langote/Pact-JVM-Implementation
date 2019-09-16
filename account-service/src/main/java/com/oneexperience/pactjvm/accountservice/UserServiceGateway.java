@@ -26,8 +26,8 @@ public class UserServiceGateway {
         this.userServiceBaseUrl = userServiceBaseUrl;
     }
 
-    public User getuser(String id) throws IOException {
-        String url = userServiceBaseUrl + "/api/user/" + id;
+    public User getStaticUser() throws IOException {
+        String url = userServiceBaseUrl + "/api/user/static";
         String jsonResponse = restTemplate.getForEntity(url, String.class).getBody();
         return objectMapper.readValue(jsonResponse, User.class);
     }
