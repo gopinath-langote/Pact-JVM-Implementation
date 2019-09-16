@@ -15,10 +15,15 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
-	testRuntimeOnly 'au.com.dius:pact-jvm-consumer-junit5:4.0.0-beta.6'
+	implementation 'org.springframework:spring-web'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+	testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+	testCompile 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+	testCompile 'au.com.dius:pact-jvm-consumer-junit5:4.0.0-beta.6'
+	compile group: 'au.com.dius', name: 'pact-jvm-provider-junit5', version: '4.0.0-beta.6'
+
 }
 test {
+	systemProperties['pact.rootDir'] = "$rootDir/Pacts/"
 	useJUnitPlatform()
 }

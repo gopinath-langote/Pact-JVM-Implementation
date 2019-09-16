@@ -1,10 +1,19 @@
-package com.oneexperience.pactjvm.userservice;
+package com.oneexperience.pactjvm.userservice.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class User {
+    @JsonProperty
+    @NotNull
     private String id;
+    @NotNull
+    @JsonProperty
     private String userName;
+    @NotNull
+    @JsonProperty
     private String userEmailId;
 
     public User(String id, String userName, String userEmailId) {
