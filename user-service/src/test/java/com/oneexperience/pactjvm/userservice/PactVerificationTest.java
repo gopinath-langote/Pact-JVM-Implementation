@@ -23,22 +23,21 @@ import java.net.URL;
 @PactFolder("../Pacts")
 public class PactVerificationTest {
 
+    private String userServiceUrl = "http://localhost:8052";
+
     @BeforeEach
     void before(PactVerificationContext context) throws Exception {
-        context.setTarget(HttpTestTarget.fromUrl(new URL("http://localhost:8052")));
+        context.setTarget(HttpTestTarget.fromUrl(new URL(userServiceUrl)));
     }
 
     @State("user-1-exists")
     public void toDefaultState() throws JsonProcessingException {
         User user = new User("1", "bob", "me@gmail.com");
-        String userString = new ObjectMapper().writeValueAsString(user);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<String> request = new HttpEntity<String>(userString, headers);
-        new RestTemplate().postForEntity("http://localhost:8052/api/user/dynamic", request, String.class);
-
-        System.out.println("Now service in default state");
+        HttpEntity<String> request = new HttpEntity<String>(new ObjectMapper().writeValueAsString(user), headers);
+        new RestTemplate().postForEntity(userServiceUrl + "/api/user/dynamic", request, String.class);
     }
 
     @TestTemplate
