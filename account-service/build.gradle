@@ -25,14 +25,5 @@ dependencies {
 
 }
 test {
-    systemProperties['pact.rootDir'] = "$rootDir/Pacts/"
     useJUnitPlatform()
-}
-pact {
-
-    publish {
-        pactDirectory = 'Pacts' // defaults to $buildDir/pacts
-        pactBrokerUrl = 'http://4c5c47f5.ngrok.io'
-    }
-
 }

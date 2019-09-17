@@ -24,6 +24,5 @@ dependencies {
 
 }
 test {
-	systemProperties['pact.rootDir'] = "$rootDir/Pacts/"
 	useJUnitPlatform()
 }
