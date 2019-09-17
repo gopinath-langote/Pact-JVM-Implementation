@@ -3,7 +3,7 @@
 
 # Pact-JVM-Implementation
 
-Example projects for https://github.com/DiUS/pact-jvm built in spring boot framework.
+Example projects for https://github.com/DiUS/pact-jvm built using spring boot.
 
 --------
 ### Prerequisite 
