@@ -6,15 +6,14 @@
 Example projects for https://github.com/DiUS/pact-jvm built in spring boot framework.
 
 --------
-#Installations 
-- Install Java-8
-- Install Intellij IDEA for your operating system. (https://www.jetbrains.com/idea/download/)
-- Clone the repository `git clone https://github.com/gopinath-langote/Pact-JVM-Implementation.git`
-- Open the project(root directory `Pact-JVM-Implementation`) in `IntelliJ IDEA`. This will take a while to download dependencies.
+### Prerequisite 
+- Java-8
+
+### Clone Project
+- Clone repository `git clone https://github.com/gopinath-langote/Pact-JVM-Implementation.git`
 - Go to the project directory `cd Pact-JVM-Implementation` 
 
-
-##### Run following commands on the terminal or command prompt.
+### Run following commands on the terminal or command prompt.
 
 # Build the application
 For Linux/Mac : `./gradlew clean build`
@@ -28,17 +27,12 @@ For Linux/Mac : `./gradlew :user-service:bootRun`
 
 For Windows : `gradlew.bat :user-service:bootRun` 
 
-- Check service is running or not at [http://localhost:8052/api/user/static](http://localhost:8052/api/user/static)
+- Check if service is running at [http://localhost:8052/api/user/static](http://localhost:8052/api/user/static)
 
 # Run the Account Service (Consumer service)
 For Linux/Mac : `./gradlew :account-service:bootRun` 
 
 For Windows : `gradlew.bat :account-service:bootRun` 
 
-- Check service is running or not at [http://localhost:8051/api/account/static/statement](http://localhost:8051/api/account/static/statement)
-
----
-
-## Slides from the conference talk `Agile India 2019`
-https://www.slideshare.net/GopinathLangote/confidently-releasing-microservices-with-consumer-driven-contracts-1
+- Check if service is running at [http://localhost:8051/api/account/static/statement](http://localhost:8051/api/account/static/statement)
 
