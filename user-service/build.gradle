@@ -14,22 +14,6 @@ repositories {
 }
 
 dependencies {
-<<<<<<< Updated upstream
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'org.springframework:spring-web'
-	implementation 'com.fasterxml.jackson.core:jackson-databind'
-	testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
-	testCompile 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
-	testCompile 'au.com.dius:pact-jvm-consumer-junit5:4.0.0-beta.6'
-	compile group: 'au.com.dius', name: 'pact-jvm-provider-junit5', version: '4.0.0-beta.6'
-	testCompile 'org.junit.vintage:junit-vintage-engine:5.3.1'
-
-}
-test {
-	systemProperties['pact.rootDir'] = "$rootDir/Pacts"
-	useJUnitPlatform()
-=======
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework:spring-web'
@@ -41,6 +25,7 @@ test {
     testCompile 'org.junit.vintage:junit-vintage-engine:5.3.1'
 
 }
+
 test {
     systemProperties['pact.rootDir'] = "$rootDir/Pacts"
     useJUnitPlatform()
@@ -61,5 +46,4 @@ pact {
 
         }
     }
->>>>>>> Stashed changes
 }
