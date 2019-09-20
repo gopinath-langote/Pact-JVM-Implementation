@@ -1,5 +1,6 @@
 package com.oneexperience.pactjvm.accountservice;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oneexperience.pactjvm.accountservice.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +13,11 @@ import java.io.IOException;
 @Service
 public class UserServiceGateway {
     private final String userServiceBaseUrl;
-    private final ObjectMapper objectMapper;
-    private RestTemplate restTemplate;
 
     @Autowired
     public UserServiceGateway(
-            RestTemplate restTemplate,
-            ObjectMapper objectMapper,
             @Value("${USER_SERVICE_BASE_URL}") String userServiceBaseUrl
     ) {
-        this.restTemplate = restTemplate;
-        this.objectMapper = objectMapper;
         this.userServiceBaseUrl = userServiceBaseUrl;
     }
 
@@ -37,7 +32,15 @@ public class UserServiceGateway {
     }
 
     private User getUserResourceByUrl(String url) throws IOException {
-        String jsonResponse = restTemplate.getForEntity(url, String.class).getBody();
-        return objectMapper.readValue(jsonResponse, User.class);
+        String jsonResponse = new RestTemplate().getForEntity(url, String.class).getBody();
+        return getObjectMapper().readValue(jsonResponse, User.class);
+    }
+
+    private ObjectMapper getObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_MISSING_CREATOR_PROPERTIES, true);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
+        return objectMapper;
     }
 }

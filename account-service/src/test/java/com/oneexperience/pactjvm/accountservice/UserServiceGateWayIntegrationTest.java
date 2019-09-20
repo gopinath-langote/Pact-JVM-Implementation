@@ -5,7 +5,6 @@ import com.oneexperience.pactjvm.accountservice.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -21,19 +20,15 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserServiceGateWayIntegrationTest {
-    @Autowired
-    private RestTemplate restTemplate;
-    @Autowired
-    private ObjectMapper objectMapper;
 
     private MockRestServiceServer mockRestServiceServer;
     private UserServiceGateway gateway;
 
     @BeforeEach
     public void setUp() throws Exception {
-        mockRestServiceServer = MockRestServiceServer.createServer(restTemplate);
+        mockRestServiceServer = MockRestServiceServer.createServer(new RestTemplate());
 
-        gateway = new UserServiceGateway(restTemplate, objectMapper, "http://localhost:8052");
+        gateway = new UserServiceGateway("http://localhost:8052");
     }
 
 
